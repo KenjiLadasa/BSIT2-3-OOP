@@ -1,29 +1,25 @@
 public class BankAccount {
-    // Static members
+
     public static String bankName = "Liceo Bank";
     public static int totalAccounts = 0;
-    public static double interestRate = 0.03; // 3%
+    public static double interestRate = 0.03;
 
-    // Static method to generate unique account numbers
-    private static int nextAccountNumber = 1000; // Starting account number
+    private static int nextAccountNumber = 1000;
     public static String generateAccountNumber() {
         totalAccounts++;
         return "ACC-" + (nextAccountNumber++);
     }
 
-    // Instance members
     private String accountNumber;
     private String accountHolderName;
     private double balance;
 
-    // Constructor
     public BankAccount(String accountHolderName, double initialBalance) {
         this.accountNumber = generateAccountNumber();
         this.accountHolderName = accountHolderName;
         this.balance = initialBalance;
     }
 
-    // Deposit method
     public void deposit(double amount) {
         if (amount > 0) {
             balance += amount;
@@ -33,7 +29,6 @@ public class BankAccount {
         }
     }
 
-    // Withdraw method
     public void withdraw(double amount) {
         if (amount > 0) {
             if (balance >= amount) {
@@ -47,12 +42,10 @@ public class BankAccount {
         }
     }
 
-    // Calculate interest method
     public double calculateInterest() {
         return balance * interestRate;
     }
 
-    // Display account information method
     public void displayAccountInfo() {
         System.out.println("\n--- Account Details ---");
         System.out.println("Bank Name: " + bankName);

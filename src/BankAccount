@@ -1,1 +1,64 @@
+public class BankAccount {
+    // Static members
+    public static String bankName = "Liceo Bank";
+    public static int totalAccounts = 0;
+    public static double interestRate = 0.03; // 3%
 
+    // Static method to generate unique account numbers
+    private static int nextAccountNumber = 1000; // Starting account number
+    public static String generateAccountNumber() {
+        totalAccounts++;
+        return "ACC-" + (nextAccountNumber++);
+    }
+
+    // Instance members
+    private String accountNumber;
+    private String accountHolderName;
+    private double balance;
+
+    // Constructor
+    public BankAccount(String accountHolderName, double initialBalance) {
+        this.accountNumber = generateAccountNumber();
+        this.accountHolderName = accountHolderName;
+        this.balance = initialBalance;
+    }
+
+    // Deposit method
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited: " + amount + " to account " + accountNumber);
+        } else {
+            System.out.println("Deposit amount must be positive.");
+        }
+    }
+
+    // Withdraw method
+    public void withdraw(double amount) {
+        if (amount > 0) {
+            if (balance >= amount) {
+                balance -= amount;
+                System.out.println("Withdrew: " + amount + " from account " + accountNumber);
+            } else {
+                System.out.println("Insufficient balance for withdrawal from account " + accountNumber);
+            }
+        } else {
+            System.out.println("Withdrawal amount must be positive.");
+        }
+    }
+
+    // Calculate interest method
+    public double calculateInterest() {
+        return balance * interestRate;
+    }
+
+    // Display account information method
+    public void displayAccountInfo() {
+        System.out.println("\n--- Account Details ---");
+        System.out.println("Bank Name: " + bankName);
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Account Holder: " + accountHolderName);
+        System.out.println("Balance: " + String.format("%.2f", balance));
+        System.out.println("Interest Rate: " + (interestRate * 100) + "%");
+    }
+}

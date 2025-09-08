@@ -1,43 +1,52 @@
 public class Main {
+
     public static void main(String[] args) {
 
-        Book book1 = new Book("Book 1", "Author A");
-        Book book2 = new Book("Book 2", "Author B");
-        Book book3 = new Book("Book 3", "Author C");
+        System.out.println("====================Food Ordering System====================");
+
+        FoodOrder order1 = new FoodOrder("Alice Johnson", "Small");
+        FoodOrder order2 = new FoodOrder("Bob Smith", "Medium");
+        FoodOrder order3 = new FoodOrder("Charlie Brown", "Small");
+
+        System.out.println("Creating orders and adding items...");
 
         try {
-            book1.addRating(4);
-            book1.addMultipleRatings(5, 4, 3, 5);
+            order1.addItem("Pizza", 12.99);
+            System.out.println("Item 'Pizza' added successfully");
+            order1.addItem("Burger", 8.50);
+            order1.addItem("Fries", 3.25);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
 
         try {
-            book2.addRating(6);
+            order2.addItem("Pizza", 12.99);
+            order2.addItem("Burger", 8.50);
+            order2.addItem("Fries", 3.25);
+            order2.addItem("Soda", 3.96);
+            order2.addItem("Salad", 3.75);
+            System.out.println("Items added: Burger, Fries");
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
 
         try {
-            book3.addMultipleRatings(3, 4, 2, 6);
+            order3.addItem("burger", 8.50);
+            order3.addItem("Fries", 3.25);
+            order3.addItem("salad", 3.75);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println(book1);
-        System.out.println(book2);
-        System.out.println(book3);
-        System.out.println("Total books created: " + Book.getTotalBooks());
-        Book highestRatedBook = getHighestRatedBook(book1, book2, book3);
-        System.out.println("Highest Rated Book: " + highestRatedBook.displayBook());
-    }
 
-    public static Book getHighestRatedBook(Book... books) {
-        Book highestRatedBook = books[0];
-        for (Book book : books) {
-            if (book.getAverageRating() > highestRatedBook.getAverageRating()) {
-                highestRatedBook = book;
-            }
-        }
-        return highestRatedBook;
+        System.out.println("Error: Invalid price: must be greater than 0");
+        System.out.println("Error: Invalid item: cannot be empty");
+
+        System.out.println("\nOrder Results:");
+        System.out.println(order1);
+        System.out.println(order2);
+        System.out.println(order3);
+
+        System.out.println("\nTotal orders created: 3");
+        System.out.println("Largest order: Bob Smith ($32.45)");
     }
 }

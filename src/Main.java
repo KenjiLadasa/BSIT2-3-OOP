@@ -1,6 +1,32 @@
 public class Main {
+
     public static void main(String[] args) {
-        System.out.println("Main branch");
+        System.out.println("Welcome to the Pet Clinic!");
+        System.out.println("==============================");
+
+        Pet dog = new Dog("Buddy", 3);
+        Pet cat = new Cat("Whiskers", 2);
+        Pet bird = new Bird("Tweety", 1);
+
+        dog.displayInfo();
+        dog.makeSound();
+        System.out.println();
+
+        cat.displayInfo();
+        cat.makeSound();
+        System.out.println();
+
+        bird.displayInfo();
+        bird.makeSound();
+        System.out.println();
+
+        System.out.println("Training Session Started!");
+        System.out.println("===========================");
+
+        Trainable trainableDog = new Dog("Buddy", 3);
+        Trainable trainableBird = new Bird("Tweety", 1);
+
+        trainableDog.performTrick();
+        trainableBird.performTrick();
     }
 }
-

@@ -1,17 +1,14 @@
-// Abstract class representing a media item
 public abstract class Media {
     protected String title;
     protected String itemId;
     protected boolean isAvailable;
 
-    // Constructor
     public Media(String title, String itemId) {
         this.title = title;
         this.itemId = itemId;
         this.isAvailable = true;
     }
 
-    // Concrete methods
     public String getTitle() {
         return title;
     }
@@ -38,7 +35,6 @@ public abstract class Media {
         System.out.println(title + " has been returned");
     }
 
-    // Abstract methods
     public abstract String getMediaType();
     public abstract void displayInfo();
 }
